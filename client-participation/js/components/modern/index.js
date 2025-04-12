@@ -134,6 +134,7 @@ import ModernSelect from './ModernSelect';
 import ModernCard from './ModernCard';
 import ModernAlert from './ModernAlert';
 import ModernModal from './ModernModal';
+import ModernWritingTips from './ModernWritingTips';
 
 export {
   Alert,
@@ -267,5 +268,6 @@ export {
   ModernSelect,
   ModernCard,
   ModernAlert,
-  ModernModal
+  ModernModal,
+  ModernWritingTips
 };

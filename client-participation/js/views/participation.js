@@ -5,7 +5,7 @@ var CommentFormView = require("../views/comment-form");
 var CommentsCollection = require("../collections/comments");
 var Constants = require("../util/constants");
 var ConversationInfoSlideView = require('../views/conversationInfoSlideView');
-var ConversationStatsHeader = require('../views/conversation-stats-header');
+var ConversationStatsHeader = require("../views/conversation-stats-header");
 var ConversationTabsView = require("../views/conversationTabs");
 var ConversationView = require("../views/conversation");
 var DivisiveCommentsView = require('../views/DivisiveCommentsView');
@@ -24,7 +24,7 @@ var TopCommentsView = require('../views/TopCommentsView');
 var Utils = require("../util/utils");
 var VisView = require("../lib/VisView");
 var VoteMoreView = require("../views/voteMoreView");
-var WritingTipsView = require("../views/writingTips");
+var WritingTipsView = require("../views/writingTipsWrapper");
 var $ = require("jquery");
 
 
@@ -1284,9 +1284,7 @@ module.exports = ConversationView.extend({
           //       });
           //     }
           //   },2000);
-          // }));
-
-
+          // });
 
           configureGutters();
           var windowWidth = $(window).width();
