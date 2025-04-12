@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Polis Chakra UI Components</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/theme.css">
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="https://unpkg.com/@chakra-ui/react@2.8.2/dist/chakra-ui-react.umd.js"></script>
+  <script src="https://unpkg.com/@emotion/react@11/dist/emotion-react.umd.min.js"></script>
+  <script src="https://unpkg.com/@emotion/styled@11/dist/emotion-styled.umd.min.js"></script>
+  <script src="https://unpkg.com/framer-motion@6/dist/framer-motion.umd.min.js"></script>
+  <style>
+    body {
+      font-family: var(--font-family);
+      padding: var(--spacing-lg);
+      max-width: 1200px;
+      margin: 0 auto;
+      background-color: var(--bg-color, #f7f7f7);
+      color: var(--text-color, #333);
+    }
+    
+    .component-container {
+      background-color: white;
+      padding: var(--spacing-lg);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-md);
+      margin-bottom: var(--spacing-lg);
+    }
+    
+    .component-section {
+      margin-bottom: var(--spacing-xl);
+    }
+    
+    .component-title {
+      margin-bottom: var(--spacing-md);
+      color: var(--color-primary);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--spacing-sm);
+      font-size: 1.25em;
+    }
+    
+    .component-description {
+      margin-bottom: var(--spacing-md);
+      color: var(--color-text-muted);
+    }
+    
+    .component-row {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+      flex-wrap: wrap;
+    }
+    
+    .chakra-button {
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      border: none;
+    }
+    
+    .chakra-button.primary {
+      background-color: var(--color-primary);
+      color: white;
+    }
+    
+    .chakra-button.secondary {
+      background-color: white;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+    
+    .chakra-input {
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      border: 1px solid var(--color-border);
+      width: 100%;
+      transition: var(--transition-fast);
+    }
+    
+    .chakra-select {
+      padding: var(--spacing-sm) var(--spacing-md);
+      border-radius: var(--border-radius-sm);
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      border: 1px solid var(--color-border);
+      width: 100%;
+      transition: var(--transition-fast);
+      background-color: white;
+    }
+    
+    .chakra-card {
+      background-color: white;
+      padding: var(--spacing-md);
+      border-radius: var(--border-radius-md);
+      box-shadow: var(--shadow-md);
+    }
+    
+    .chakra-alert {
+      padding: var(--spacing-md);
+      border-radius: var(--border-radius-md);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+    
+    .chakra-alert.info {
+      background-color: var(--color-info-bg);
+      color: var(--color-info);
+    }
+    
+    .chakra-alert.success {
+      background-color: var(--color-success-bg);
+      color: var(--color-success);
+    }
+    
+    .chakra-alert.warning {
+      background-color: var(--color-warning-bg);
+      color: var(--color-warning);
+    }
+    
+    .chakra-alert.error {
+      background-color: var(--color-error-bg);
+      color: var(--color-error);
+    }
+  </style>
+</head>
+<body>
+  <h1>Polis Chakra UI Components</h1>
+  <p>This page showcases the new Chakra UI components for Polis.</p>
+  
+  <div class="component-container">
+    <div class="component-section">
+      <h2 class="component-title">Buttons</h2>
+      <div class="component-description">
+        Modern buttons with better accessibility and styling options.
+      </div>
+      <div class="component-row">
+        <button class="chakra-button primary">Primary Button</button>
+        <button class="chakra-button secondary">Secondary Button</button>
+        <button class="chakra-button primary" disabled>Disabled</button>
+      </div>
+    </div>
+
+    <div class="component-section">
+      <h2 class="component-title">Inputs</h2>
+      <div class="component-description">
+        Modern input fields with validation and error states.
+      </div>
+      <div class="component-row">
+        <input type="text" class="chakra-input" placeholder="Enter text...">
+        <input type="text" class="chakra-input" placeholder="Error state" is-invalid>
+      </div>
+    </div>
+
+    <div class="component-section">
+      <h2 class="component-title">Selects</h2>
+      <div class="component-description">
+        Modern select dropdown with improved styling and accessibility.
+      </div>
+      <div class="component-row">
+        <select class="chakra-select">
+          <option value="">Select an option</option>
+          <option value="1">Option 1</option>
+          <option value="2">Option 2</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="component-section">
+      <h2 class="component-title">Cards</h2>
+      <div class="component-description">
+        Modern cards for grouping content with better layout options.
+      </div>
+      <div class="component-row">
+        <div class="chakra-card">
+          <h3>Card Title</h3>
+          <p>This is some content inside the card.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-section">
+      <h2 class="component-title">Alerts</h2>
+      <div class="component-description">
+        Modern alerts with different status types and better accessibility.
+      </div>
+      <div class="component-row">
+        <div class="chakra-alert info">
+          <span>Info Alert</span>
+        </div>
+        <div class="chakra-alert success">
+          <span>Success Alert</span>
+        </div>
+        <div class="chakra-alert warning">
+          <span>Warning Alert</span>
+        </div>
+        <div class="chakra-alert error">
+          <span>Error Alert</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="component-section">
+      <h2 class="component-title">Modal</h2>
+      <div class="component-description">
+        Modern modal dialog with better accessibility and keyboard support.
+      </div>
+      <div class="component-row">
+        <button class="chakra-button primary" onclick="showModal()">Open Modal</button>
+      </div>
+      <div id="modal" class="modal fade" tabindex="-1">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Modal Title</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+            <div class="modal-body">
+              <p>Modal content goes here.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Add CSS variables if not defined
+    if (!getComputedStyle(document.documentElement).getPropertyValue('--color-primary')) {
+      document.documentElement.style.setProperty('--color-primary', '#4285f4');
+      document.documentElement.style.setProperty('--color-secondary', '#34a853');
+      document.documentElement.style.setProperty('--color-info', '#2196f3');
+      document.documentElement.style.setProperty('--color-success', '#4caf50');
+      document.documentElement.style.setProperty('--color-warning', '#ff9800');
+      document.documentElement.style.setProperty('--color-error', '#f44336');
+      document.documentElement.style.setProperty('--color-info-bg', '#e3f2fd');
+      document.documentElement.style.setProperty('--color-success-bg', '#e8f5e9');
+      document.documentElement.style.setProperty('--color-warning-bg', '#fff3e0');
+      document.documentElement.style.setProperty('--color-error-bg', '#ffebee');
+      document.documentElement.style.setProperty('--color-border', '#e0e0e0');
+      document.documentElement.style.setProperty('--bg-color', '#f7f7f7');
+      document.documentElement.style.setProperty('--text-color', '#202124');
+      document.documentElement.style.setProperty('--font-family', 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif');
+      document.documentElement.style.setProperty('--font-size-base', '16px');
+      document.documentElement.style.setProperty('--spacing-sm', '0.5rem');
+      document.documentElement.style.setProperty('--spacing-md', '1rem');
+      document.documentElement.style.setProperty('--spacing-lg', '1.5rem');
+      document.documentElement.style.setProperty('--spacing-xl', '2rem');
+      document.documentElement.style.setProperty('--border-radius-sm', '4px');
+      document.documentElement.style.setProperty('--border-radius-md', '8px');
+      document.documentElement.style.setProperty('--shadow-sm', '0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)');
+      document.documentElement.style.setProperty('--shadow-md', '0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23)');
+      document.documentElement.style.setProperty('--transition-fast', 'all 0.3s cubic-bezier(.25,.8,.25,1)');
+    }
+
+    function showModal() {
+      const modal = new bootstrap.Modal(document.getElementById('modal'));
+      modal.show();
+    }
+  </script>
+</body>
+</html>

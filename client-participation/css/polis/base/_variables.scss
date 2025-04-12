@@ -4,9 +4,17 @@
 //
 
 // ----------------------------------------------------------------------------
-// COLORS
+// COLORS - CSS Custom Properties
 // ----------------------------------------------------------------------------
-//
+
+// Add support for CSS variables with SCSS fallbacks
+$brand-color: var(--color-primary, #3498db);
+$brand-text-color: var(--color-primary-dark, #0a77bf);
+$green: var(--color-secondary, #2ecc71);
+$dark-green: var(--color-secondary-dark, #27ae60);
+$hover-color: var(--color-primary-dark, #0565a6);
+
+// Legacy colors maintained for backward compatibility
 $light-gray: #717171;
 $medium-gray: #555555;
 $dark-gray: #171717;
@@ -22,19 +30,9 @@ $darker8: rgba(0,0,0, 0.8);
 $darker9: rgba(0,0,0, 0.9);
 $darker10: rgba(0,0,0, 1);
 
-
 $light-blue-gray: #6f7c80;
 $blue-gray: #555f61;
 $dark-blue-gray: #373d3f;
-
-$green: #2ecc71;
-$dark-green: #27ae60;
-
-$header-footer-color: #F4F4F4;
-
-// $brand-light-color: #4daae8;
-$brand-color: #3498db;
-$brand-text-color: #0a77bf;
 
 $panel-color: #f7f7f7;
 
@@ -46,7 +44,6 @@ $default-border-color: #e4e4e4;
 
 // Links
 $link-color: $brand-text-color;
-$hover-color: #0565a6;
 
 // Buttons
 $btn-hover-color: #0a77bf;
@@ -85,7 +82,6 @@ $sans-font: "Helvetica Neue", Helvetica, sans-serif;
 
 $serif-font: "Helvetica Neue", Helvetica, sans-serif;
 $serif-headline-font: "Helvetica Neue", Helvetica, sans-serif;
-
 
 // $serif-font: "canada-type-gibson", "Hoefler Text", "Baskerville", "Garamond", "Cambria", Georgia, serif;
 // $serif-headline-font:  "Chaparral Pro", "Hoefler Text", "Baskerville", "Garamond", "Cambria", Georgia, serif;

@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Polis UI Sandbox</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../css/theme.css">
+  <style>
+    body {
+      font-family: var(--font-family, "Helvetica Neue", Helvetica, Arial, sans-serif);
+      line-height: var(--line-height-base, 1.5);
+      padding: var(--spacing-lg, 1.5rem);
+      max-width: var(--max-content-width, 1200px);
+      margin: 0 auto;
+    }
+    
+    h1, h2, h3 {
+      color: var(--color-text, #202124);
+    }
+    
+    .section {
+      margin-bottom: var(--spacing-xl, 2rem);
+      padding: var(--spacing-lg, 1.5rem);
+      border-radius: var(--border-radius-md, 8px);
+      background-color: #f9f9f9;
+      box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.1));
+    }
+    
+    .color-swatch {
+      width: 120px;
+      height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      border-radius: var(--border-radius-sm, 4px);
+      margin-bottom: var(--spacing-sm, 0.5rem);
+    }
+    
+    .swatches {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-md, 1rem);
+    }
+    
+    .button {
+      padding: var(--spacing-sm, 0.5rem) var(--spacing-md, 1rem);
+      border-radius: var(--border-radius-sm, 4px);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-fast, 150ms ease);
+      border: none;
+      margin-right: var(--spacing-md, 1rem);
+      margin-bottom: var(--spacing-md, 1rem);
+    }
+    
+    .button-primary {
+      background-color: var(--color-primary, #4285f4);
+      color: white;
+    }
+    
+    .button-secondary {
+      background-color: var(--color-secondary, #34a853);
+      color: white;
+    }
+    
+    .button-outline {
+      background-color: transparent;
+      border: 1px solid var(--color-primary, #4285f4);
+      color: var(--color-primary, #4285f4);
+    }
+    
+    .flex-container {
+      display: flex;
+      gap: var(--spacing-md, 1rem);
+    }
+    
+    .card {
+      flex: 1;
+      padding: var(--spacing-md, 1rem);
+      background-color: white;
+      border-radius: var(--border-radius-sm, 4px);
+      box-shadow: var(--shadow-sm, 0 1px 2px rgba(0, 0, 0, 0.1));
+    }
+    
+    .spacing-demo {
+      margin-bottom: var(--spacing-sm, 0.5rem);
+      display: flex;
+      align-items: center;
+    }
+    
+    .spacing-block {
+      background-color: var(--color-primary, #4285f4);
+      margin-right: var(--spacing-md, 1rem);
+    }
+    
+    /* Responsive utilities from theme.css will apply automatically */
+    @media (max-width: 767px) {
+      .swatches {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>Polis UI Theme Demo</h1>
+  <p>This page demonstrates the CSS variables and responsive utilities defined in theme.css.</p>
+  
+  <div class="section">
+    <h2>Color Palette</h2>
+    <div class="swatches">
+      <div>
+        <div class="color-swatch" style="background-color: var(--color-primary, #4285f4);">Primary</div>
+        <code>--color-primary</code>
+      </div>
+      <div>
+        <div class="color-swatch" style="background-color: var(--color-primary-dark, #0a77bf);">Primary Dark</div>
+        <code>--color-primary-dark</code>
+      </div>
+      <div>
+        <div class="color-swatch" style="background-color: var(--color-secondary, #34a853);">Secondary</div>
+        <code>--color-secondary</code>
+      </div>
+      <div>
+        <div class="color-swatch" style="background-color: var(--color-secondary-dark, #27ae60);">Secondary Dark</div>
+        <code>--color-secondary-dark</code>
+      </div>
+      <div>
+        <div class="color-swatch" style="background-color: var(--color-accent, #ea4335);">Accent</div>
+        <code>--color-accent</code>
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Buttons</h2>
+    <button class="button button-primary">Primary Button</button>
+    <button class="button button-secondary">Secondary Button</button>
+    <button class="button button-outline">Outline Button</button>
+    <button class="button button-primary mobile-full-width">Full Width on Mobile</button>
+  </div>
+  
+  <div class="section">
+    <h2>Spacing Variables</h2>
+    <div class="spacing-demo">
+      <div class="spacing-block" style="width: var(--spacing-xs); height: var(--spacing-xs);"></div>
+      <code>--spacing-xs</code>
+    </div>
+    <div class="spacing-demo">
+      <div class="spacing-block" style="width: var(--spacing-sm); height: var(--spacing-sm);"></div>
+      <code>--spacing-sm</code>
+    </div>
+    <div class="spacing-demo">
+      <div class="spacing-block" style="width: var(--spacing-md); height: var(--spacing-md);"></div>
+      <code>--spacing-md</code>
+    </div>
+    <div class="spacing-demo">
+      <div class="spacing-block" style="width: var(--spacing-lg); height: var(--spacing-lg);"></div>
+      <code>--spacing-lg</code>
+    </div>
+    <div class="spacing-demo">
+      <div class="spacing-block" style="width: var(--spacing-xl); height: var(--spacing-xl);"></div>
+      <code>--spacing-xl</code>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Responsive Layout</h2>
+    <p>Resize your browser window to see these elements stack on mobile:</p>
+    <div class="flex-container mobile-stack">
+      <div class="card">
+        <h3>Card 1</h3>
+        <p>This card will stack vertically on mobile screens.</p>
+      </div>
+      <div class="card">
+        <h3>Card 2</h3>
+        <p>This card will stack vertically on mobile screens.</p>
+      </div>
+      <div class="card">
+        <h3>Card 3</h3>
+        <p>This card will stack vertically on mobile screens.</p>
+      </div>
+    </div>
+    
+    <div class="desktop-only" style="margin-top: var(--spacing-lg);">
+      <div style="padding: var(--spacing-md); background-color: var(--color-primary); color: white; text-align: center;">
+        This message only appears on desktop
+      </div>
+    </div>
+    
+    <div class="mobile-only" style="margin-top: var(--spacing-lg);">
+      <div style="padding: var(--spacing-md); background-color: var(--color-secondary); color: white; text-align: center;">
+        This message only appears on mobile
+      </div>
+    </div>
+  </div>
+  
+  <div class="section">
+    <h2>Shadow Variables</h2>
+    <div style="display: flex; flex-wrap: wrap; gap: var(--spacing-lg);">
+      <div style="width: 100px; height: 100px; background: white; box-shadow: var(--shadow-sm); display: flex; align-items: center; justify-content: center;">
+        --shadow-sm
+      </div>
+      <div style="width: 100px; height: 100px; background: white; box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center;">
+        --shadow-md
+      </div>
+      <div style="width: 100px; height: 100px; background: white; box-shadow: var(--shadow-lg); display: flex; align-items: center; justify-content: center;">
+        --shadow-lg
+      </div>
+    </div>
+  </div>
+  <div class="section">
+    <h2>Button Comparison</h2>
+    <div style="padding: 2rem; max-width: 800px; margin: 0 auto;">
+      <h1>Button Test</h1>
+      
+      <div style="display: flex; gap: 1rem; margin-bottom: 2rem;">
+        <button class="original-button primary">Original Primary</button>
+        <button class="original-button secondary">Original Secondary</button>
+      </div>
+      
+      <div style="display: flex; gap: 1rem;">
+        <button class="modern-button primary">Modern Primary</button>
+        <button class="modern-button secondary">Modern Secondary</button>
+      </div>
+    </div>
+    
+    <style>
+    .original-button {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      border: none;
+    }
+    
+    .original-button.primary {
+      background-color: var(--color-primary);
+      color: white;
+    }
+    
+    .original-button.secondary {
+      background-color: white;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+    
+    .modern-button {
+      padding: 0.5rem 1rem;
+      border-radius: 4px;
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-fast);
+      border: none;
+    }
+    
+    .modern-button.primary {
+      background-color: var(--color-primary);
+      color: white;
+    }
+    
+    .modern-button.secondary {
+      background-color: white;
+      color: var(--color-primary);
+      border: 1px solid var(--color-primary);
+    }
+    </style>
+  </div>
+</body>
+</html>

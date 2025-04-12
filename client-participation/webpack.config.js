@@ -10,6 +10,9 @@ const glob = require('glob')
 const fs = require('fs')
 const pkg = require('./package.json')
 const TerserPlugin = require("terser-webpack-plugin")
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 const embedServiceHostname = process.env.EMBED_SERVICE_HOSTNAME || 'pol.is';
 const fbAppId = process.env.FB_APP_ID;
@@ -78,9 +81,12 @@ module.exports = (env, options) => {
   var isDevBuild = options.mode === 'development'
   var isDevServer = process.env.WEBPACK_SERVE
   return {
+    mode: 'production',
     entry: [
       './js/main',
-      './css/polis_main.scss'
+      './js/components/modern/index.js',
+      './css/polis_main.scss',
+      './css/theme.css'
     ],
     output: {
       publicPath: '/',
@@ -138,6 +144,10 @@ module.exports = (env, options) => {
         'process.env.FB_APP_ID': JSON.stringify(fbAppId),
         'process.env.GA_TRACKING_ID': JSON.stringify(gaTrackingId),
       }),
+      new MiniCssExtractPlugin({
+        filename: '[name].css',
+      }),
+      new CleanWebpackPlugin(),
       // Only compress files during production builds.
       ...((isDevBuild || isDevServer) ? [] : [
         new CompressionPlugin({
@@ -150,7 +160,10 @@ module.exports = (env, options) => {
     // Only minify during production builds
     optimization: {
       minimize: !isDevBuild,
-      minimizer: [new TerserPlugin()]
+      minimizer: [
+        new CssMinimizerPlugin(),
+        new TerserPlugin()
+      ]
     },
     module: {
       rules: [
@@ -170,7 +183,8 @@ module.exports = (env, options) => {
           use: {
             loader: 'babel-loader',
             options: {
-              presets: ['@babel/preset-env', '@babel/react']
+              presets: ['@babel/preset-env', '@babel/preset-react'],
+              plugins: ['@babel/plugin-proposal-class-properties']
             },
           },
         },
@@ -188,11 +202,18 @@ module.exports = (env, options) => {
           test: /\.s[ac]ss$/,
           exclude: /node_modules/,
           use: [
-            {
-              loader: 'file-loader',
-              options: { outputPath: 'css/', name: 'polis.css' }
-            },
+            MiniCssExtractPlugin.loader,
+            'css-loader',
             'sass-loader'
+          ]
+        },
+        {
+          test: /\.css$/,
+          exclude: /node_modules/,
+          use: [
+            MiniCssExtractPlugin.loader,
+            'css-loader',
+            'postcss-loader'
           ]
         },
         // Shims for older modules
@@ -203,7 +224,7 @@ module.exports = (env, options) => {
             options: {
               presets: [
                 '@babel/preset-env',
-                '@babel/react'
+                '@babel/preset-react'
               ],
               sourceType: 'script' // set 'this' to 'window'
             },
@@ -216,7 +237,7 @@ module.exports = (env, options) => {
             options: {
               presets: [
                 '@babel/preset-env',
-                '@babel/react'
+                '@babel/preset-react'
               ],
               sourceType: 'script', // set 'this' to 'window'
             },

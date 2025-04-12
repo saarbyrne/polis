@@ -3,6 +3,16 @@
 // init this asap
 var preloadHelper = require("./util/preloadHelper");
 
+// Import global theme styles
+require("../css/theme.css");
+
+// Import Chakra UI components
+import React from 'react';
+import { ChakraProvider } from '@chakra-ui/react';
+import theme from './theme';
+
+// Import modern components
+import { ModernButton, ModernInput, ModernSelect, ModernCard, ModernAlert, ModernModal } from './components/modern';
 
 var $ = require("jquery");
 var _ = require("lodash");
@@ -418,6 +428,13 @@ $.when(
 
 });
 
+const App = () => (
+  <ChakraProvider theme={theme}>
+    <RootView />
+  </ChakraProvider>
+);
+
+export default App;
 
 function initialize(complete) {
   $(function() {
@@ -431,7 +448,7 @@ function initialize(complete) {
     // depend on Backbone history being setup
     // so need to wait to loadUrl() (which will)
     // actually execute the route
-    RootView.getInstance(document.body);
+    App.getInstance(document.body);
 
 
     // FB.Event.subscribe('auth.authResponseChange', function(response) {
