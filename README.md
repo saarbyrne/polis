@@ -1,250 +1,454 @@
-# Polis
+# Polis - UX Improvement Fork
 
-Polis is an AI powered sentiment gathering platform. More organic than surveys and less effort than focus groups.
+> **AI-powered sentiment gathering platform** - More organic than surveys, less effort than focus groups. This fork focuses on modernizing the UI/UX with Chakra UI and contemporary design patterns.
 
-For a detailed methods paper, see [Polis: Scaling Deliberation by Mapping High Dimensional Opinion Spaces][methods-paper].
-
-   [methods-paper]: https://www.e-revistes.uji.es/index.php/recerca/article/view/5516/6558
-
-<!-- Changes to badge text in URLs below, require changes to "name" value in .github/workflows/*.yml -->
 [![Docker Image Builds](https://github.com/compdemocracy/polis/workflows/Docker%20image%20builds/badge.svg)][docker-image-builds]
 [![E2E Tests](https://github.com/compdemocracy/polis/workflows/E2E%20Tests/badge.svg)][e2e-tests]
 
    [docker-image-builds]: https://hub.docker.com/u/compdem
    [e2e-tests]: https://github.com/compdemocracy/polis/actions?query=workflow%3A%22E2E+Tests%22
 
+**Original Repository**: [compdemocracy/polis](https://github.com/compdemocracy/polis)
+
 ---
 
-## 🎈 🪁 Start here! 🪁 🎈
+## 🎨 What This Fork Adds
 
-If you're interested in using or contributing to Polis, please see the following:
+This is a fork of the excellent [Polis deliberation platform](https://github.com/compdemocracy/polis) focused specifically on **improving user experience and interface design**. While the original Polis is a powerful sentiment-gathering tool, its UI needs modernization to meet contemporary standards.
 
-- [📚 **knowledge base**][knowledge-base]: for a comprehensive wiki to help you understand and use the system
-- [🌐 **main deployment**](https://pol.is): the main deployment of Polis is at <https://pol.is>, and is
-  free to use for nonprofits and government
-- [💬 **discussions**][discussions]: for questions (QA) and discussion
-- [✔️ **issues**][issues]: for well-defined technical issues
-- [🏗️ **project board**][board]: somewhat incomplete, but still useful; We stopped around the time that Projects Beta came out, and we have a [Projects Beta Board][beta-board] that we'll eventually be migrating to
-- [✉️ reach out][hello]: if you are applying Polis in a high-impact context, and need more help than you're able to get through the public channels above
+### **UX Improvements Implemented**
+
+#### ✅ **Chakra UI Integration** (Completed)
+- **Modern Component Library**: Migrated core components to Chakra UI v2.8
+- **Consistent Design System**: Theme system using CSS variables from existing Polis styles
+- **Accessibility First**: ARIA-compliant components out of the box
+- **Dark Mode Ready**: Built-in theme support for future dark mode implementation
+
+**Components Migrated**:
+- `ModernButton` - Responsive buttons with mobile-first design
+- `ModernInput` - Form inputs with validation states
+- `ModernSelect` - Dropdown selections with improved UX
+- `ModernCard` - Content containers with shadows and borders
+- `ModernAlert` - User feedback notifications
+- `ModernModal` - Dialog overlays with proper focus management
+- `ModernWritingTips` - Enhanced writing guidance component
+
+#### 🔄 **Responsive Design System**
+- **CSS Variable Architecture**: Theme tokens for colors, spacing, shadows, borders
+- **Mobile-First Utilities**: `.mobile-only`, `.mobile-full-width`, `.mobile-stack`
+- **Breakpoint Consistency**: Unified responsive behavior across components
+
+#### 📦 **Developer Experience**
+- **Component Sandbox**: Interactive testing environment at `/sandbox/chakra-components.html`
+- **Migration Guides**: Documentation for Chakra UI migration patterns
+- **Theming Guide**: Comprehensive guide to design system usage
+- **Rollback Plan**: Clear path to revert changes if needed
+
+### **Roadmap - Planned Improvements**
+
+#### 🚧 **Phase 2: UI Polish** (In Progress)
+- [ ] Complete migration of all participation UI components
+- [ ] Redesign admin panel with modern layout
+- [ ] Improve report visualization components
+- [ ] Add loading states and skeleton screens
+- [ ] Implement toast notifications system
+
+#### 📋 **Phase 3: Accessibility & Performance**
+- [ ] WCAG 2.1 AA compliance audit
+- [ ] Keyboard navigation improvements
+- [ ] Screen reader optimization
+- [ ] Performance optimization (code splitting, lazy loading)
+- [ ] Reduce bundle size with tree shaking
+
+#### 🎯 **Phase 4: Feature UX**
+- [ ] Onboarding flow redesign
+- [ ] Mobile app optimizations
+- [ ] Real-time feedback animations
+- [ ] Improved comment moderation interface
+- [ ] Enhanced data visualization
+
+---
+
+## 🎯 What is Polis?
+
+Polis is an **AI-powered sentiment gathering platform** that enables groups to have productive conversations at scale. It visualizes opinion landscapes and helps identify consensus and division within large groups.
+
+### **Key Features**
+
+- **Opinion Mapping**: Participants vote on statements, AI maps opinion clusters
+- **Consensus Discovery**: Identifies statements with broad agreement
+- **Real-Time Visualization**: Live updates as participants engage
+- **Scalable Deliberation**: Works with 10s to 100,000s of participants
+- **Comment Submission**: Participants can submit new statements
+- **Moderation Tools**: Admin interface for conversation management
+
+### **Use Cases**
+
+- **Government**: Citizen consultation and policy feedback
+- **Organizations**: Employee engagement and decision-making
+- **Communities**: Consensus-building on controversial topics
+- **Research**: Large-scale opinion research studies
+
+For methodology details, see [Polis: Scaling Deliberation by Mapping High Dimensional Opinion Spaces][methods-paper].
+
+   [methods-paper]: https://www.e-revistes.uji.es/index.php/recerca/article/view/5516/6558
+
+---
+
+## 🚀 Quick Start
+
+### **Prerequisites**
+- **Docker** & **Docker Compose** (or Docker Desktop on Mac/Windows)
+- **Git** for cloning
+
+### **Installation**
+
+```bash
+# 1. Clone this fork
+git clone https://github.com/saarbyrne/polis.git
+cd polis
+
+# 2. Copy environment config
+cp example.env .env
+
+# 3. Start the system
+make start
+```
+
+**Note**: On macOS, if you get a port conflict on 5000, disable AirPlay Receiver in System Settings or change `API_SERVER_PORT` in `.env`.
+
+### **Access the Application**
+
+- **Participation Interface**: `http://localhost:80/`
+- **Create User**: `http://localhost:80/createuser`
+- **Admin Panel**: `http://localhost:80/admin` (after creating user)
+
+### **Component Sandbox** (New in this fork)
+
+```bash
+# Access the Chakra UI component sandbox
+# Start the system, then visit:
+http://localhost:80/sandbox/chakra-components.html
+```
+
+The sandbox lets you:
+- Test all modern components interactively
+- Compare original vs Chakra UI components
+- Test responsive behavior at different screen sizes
+- Preview light/dark theme support
+
+---
+
+## 💻 Development
+
+### **Using Modern Components**
+
+This fork adds new Chakra UI components alongside the original codebase. You can gradually migrate views to use modern components:
+
+```jsx
+// Import modern components
+import { ModernButton, ModernInput, ModernCard } from './components/modern';
+
+// Use in your views
+<ModernCard hasShadow={true}>
+  <ModernInput
+    placeholder="Enter your comment"
+    value={comment}
+    onChange={(e) => setComment(e.target.value)}
+  />
+  <ModernButton primary onClick={handleSubmit}>
+    Submit
+  </ModernButton>
+</ModernCard>
+```
+
+**Documentation**:
+- [Migration Guide](./client-participation/MIGRATION_GUIDE.md) - How to migrate to Chakra UI
+- [Theming Guide](./client-participation/THEMING_GUIDE.md) - Using the design system
+
+### **Development Mode**
+
+Enable live code reloading and dev tools:
+
+```bash
+docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile postgres up --build
+```
+
+This enables:
+- Live code reloading for server and clients
+- Static type checking
+- Direct database access ports
+- nREPL connection for math process
+
+### **Running Tests**
+
+```bash
+# E2E tests with Cypress
+make test-e2e
+
+# See e2e/README.md for more testing options
+```
+
+---
+
+## 📁 Project Structure
+
+```
+polis/
+├── client-participation/          # Main participation UI
+│   ├── js/
+│   │   ├── components/
+│   │   │   └── modern/            # 🆕 Chakra UI components
+│   │   │       ├── ModernButton.js
+│   │   │       ├── ModernInput.js
+│   │   │       ├── ModernCard.js
+│   │   │       ├── ModernModal.js
+│   │   │       ├── ModernAlert.js
+│   │   │       ├── ModernSelect.js
+│   │   │       └── ModernWritingTips.js
+│   │   ├── theme.js               # 🆕 Chakra UI theme config
+│   │   └── main.js
+│   ├── css/
+│   │   └── theme.css              # 🆕 CSS variables
+│   ├── sandbox/                   # 🆕 Component testing
+│   │   ├── chakra-components.html
+│   │   └── index.js
+│   ├── MIGRATION_GUIDE.md         # 🆕 Chakra migration docs
+│   └── THEMING_GUIDE.md           # 🆕 Design system docs
+│
+├── client-admin/                  # Admin panel (TBD for migration)
+├── client-report/                 # Report visualization (TBD)
+├── server/                        # Node.js API server
+├── math/                          # Python analysis engine
+├── file-server/                   # Static file serving
+│
+├── docker-compose.yml             # Base Docker config
+├── docker-compose.dev.yml         # Dev overlay
+├── Makefile                       # Convenience commands
+└── README.md                      # This file
+```
+
+---
+
+## 🔧 Configuration
+
+Polis is configured via environment variables in `.env`.
+
+### **Essential Variables**
+
+```bash
+# Domain
+SERVER_URL=http://localhost:80
+
+# Database
+DATABASE_URL=postgres://postgres:password@postgres:5432/polis
+
+# Ports (change if conflicts occur)
+API_SERVER_PORT=5000
+REPORT_PORT=8000
+ADMIN_PORT=8001
+```
+
+See [Configuration Guide](docs/configuration.md) for complete details.
+
+---
+
+## 🛠️ Available Commands
+
+```bash
+# Start system (development mode with Postgres)
+make start
+
+# Start and rebuild containers
+make start-rebuild
+
+# Stop system
+make stop
+
+# View logs
+make logs
+
+# Run tests
+make test-e2e
+
+# Production mode
+make PROD start
+
+# Full rebuild (WARNING: Deletes database!)
+make start-FULL-REBUILD
+
+# View all commands
+make help
+```
+
+---
+
+## 🎨 UX Improvement Philosophy
+
+This fork maintains the original Polis functionality while systematically improving the user experience:
+
+### **Design Principles**
+
+1. **Progressive Enhancement**: New components coexist with originals
+2. **Accessibility First**: WCAG 2.1 compliance as default
+3. **Mobile Responsive**: Touch-friendly, mobile-first design
+4. **Performance**: Optimized bundle sizes, lazy loading
+5. **Developer Experience**: Clear migration paths, good documentation
+
+### **Not a Redesign**
+
+This is **not** a complete visual redesign. The goal is to:
+- Modernize the component library
+- Improve accessibility and responsiveness
+- Maintain familiar workflows
+- Make future UI improvements easier
+
+The original Polis design patterns remain largely intact.
+
+---
+
+## 📚 Documentation
+
+### **This Fork**
+- [Migration Guide](./client-participation/MIGRATION_GUIDE.md) - Chakra UI migration patterns
+- [Theming Guide](./client-participation/THEMING_GUIDE.md) - Design system usage
+
+### **Original Polis**
+- [📚 Knowledge Base][knowledge-base] - Comprehensive Polis wiki
+- [Configuration](docs/configuration.md) - Environment setup
+- [SSL/HTTPS](docs/ssl.md) - Production security
+- [Scaling](docs/scaling.md) - High-traffic deployments
+- [Migrations](docs/migrations.md) - Database migrations
 
    [knowledge-base]: https://compdemocracy.org/Welcome
+
+---
+
+## 🤝 Contributing
+
+### **To This Fork**
+
+Contributions focused on UX improvements are welcome!
+
+**Priority Areas**:
+1. Complete Chakra UI migration of remaining components
+2. Accessibility improvements (ARIA, keyboard nav, screen readers)
+3. Mobile UX enhancements
+4. Performance optimizations
+5. Design system documentation
+
+**Workflow**:
+```bash
+# 1. Fork this repository
+# 2. Create feature branch
+git checkout -b feature/improve-modal-ux
+
+# 3. Make changes, test in sandbox
+# 4. Commit with descriptive messages
+git commit -m "Improve modal keyboard navigation"
+
+# 5. Push and create PR
+git push origin feature/improve-modal-ux
+```
+
+### **To Original Polis**
+
+For core Polis functionality improvements, contribute to the [upstream repository](https://github.com/compdemocracy/polis).
+
+---
+
+## 🔄 Syncing with Upstream
+
+This fork periodically syncs with the original Polis repository:
+
+```bash
+# Fetch upstream changes
+git fetch upstream
+
+# Merge upstream changes
+git merge upstream/edge
+
+# Resolve conflicts (prioritize UX improvements)
+# Push to fork
+git push origin main
+```
+
+---
+
+## 💬 Support
+
+### **For UX Fork Issues**
+- [Open an issue](https://github.com/saarbyrne/polis/issues) on this repository
+- Specifically for Chakra UI, theming, or responsive design questions
+
+### **For Original Polis**
+- [💬 Discussions][discussions] - General questions
+- [✔️ Issues][issues] - Technical issues
+- [📚 Knowledge Base][knowledge-base] - Documentation
+- [✉️ Contact][hello] - High-impact deployments
+
    [issues]: https://github.com/compdemocracy/polis/issues
-   [board]: https://github.com/compdemocracy/polis/projects/1
-   [beta-board]: https://github.com/compdemocracy/polis/projects/1
    [discussions]: https://github.com/compdemocracy/polis/discussions
    [hello]: mailto:hello@compdemocracy.org
 
-If you're trying to set up a Polis deployment or development environment, then please read the rest of this document 👇 ⬇️ 👇
+---
+
+## 📊 Tech Stack
+
+| Layer | Technology | Notes |
+|-------|-----------|-------|
+| **Component Library** | Chakra UI v2.8 | **New in this fork** |
+| **Styling** | Emotion + SCSS | Hybrid approach during migration |
+| **Frontend Framework** | React 18 + Backbone.js | Gradual migration from Backbone |
+| **Build Tool** | Webpack 5 | Bundle optimization ongoing |
+| **Backend API** | Node.js + Express | Original Polis stack |
+| **Analysis Engine** | Python 3 + Pandas | Original Polis stack |
+| **Database** | PostgreSQL 14 | Original Polis stack |
+| **Deployment** | Docker + Docker Compose | Original Polis stack |
 
 ---
 
-## ⚡ Running Polis
+## 📈 Migration Status
 
-Polis comes with Docker infrastructure for running a complete system, whether for a [production deployment](#-production-deployment) or a [development environment](#-development-tooling) (details for each can be found in later sections of this document).
-As a consequence, the only prerequisite to running Polis is that you install a recent `docker` (and Docker Desktop if you are on Mac or Windows).
+### **Participation UI**
+- ✅ Button components
+- ✅ Input components
+- ✅ Card/container components
+- ✅ Modal dialogs
+- ✅ Alert notifications
+- ✅ Writing tips component
+- ⚠️ Voting interface (in progress)
+- ⚠️ Comment thread (in progress)
+- ⚠️ Visualization canvas (TBD)
 
-If you aren't able to use Docker for some reason, the various Dockerfiles found in subdirectories (`math`, `server`, `*-client`) of this repository _can_ be used as a reference for how you'd set up a system manually.
-If you're interested in doing the legwork to support alternative infrastructure, please [let us know in an issue](https://github.com/compdemocracy.org/issues).
+### **Admin UI**
+- ❌ Not started
 
-### Quick Start
+### **Report UI**
+- ❌ Not started
 
-```sh
-cp example.env .env
-make start
-```
-
-That should run docker compose with the development overlay (see below) and default configuration values.
-
-You may encounter an error on mac if AirPlay receiver is enabled, which defaults to port 5000 and collides with Polis API_SERVER_PORT. You can change this in your `.env` file or disable AirPlay receiver in system settings.
-
-Visit `localhost:80/createuser` and get started.
-
-### Docker & Docker Compose
-
-Newer versions of `docker` have `docker compose` built in as a subcommand.
-If you are using an older version (and don't want to upgrade), you'll need to separately install `docker-compose`, and use that instead in the instructions that follow.
-Note however that the newer `docker compose` command is required to [take advantage of Docker Swarm](/docs/scaling#docker-compose-over-docker-swarm) as a scaling option.
-
-Many convenient commands are found in the Makefile. Run `make help` for a list of available commands.
-
-### Building and running the containers
-
-First clone the repository, then navigate via command line to the root directory and run the following command to build and run the docker containers.
-
-Copy the example.env file and modify as needed (although it should just work as is for development and testing purposes).
-
-```sh
-cp example.env .env
-```
-
-
-```sh
-docker compose --profile postgres up --build
-```
-
-If you get a permission error, try running this command with `sudo`.
-If this fixes the problem, sudo will be necessary for all other commands as well.
-To avoid having to use `sudo` in the future (on a Linux or Windows machine with WSL), [you can follow setup instructions here.](https://docs.docker.com/engine/install/linux-postinstall/)
-
-Once you've built the docker images, you can run without `--build`, which may be faster. Run
-
-```sh
-docker compose --profile postgres up
-```
-
-or simply
-
-```sh
-make start
-```
-
-Any time you want to _rebuild_ the images, just reaffix `--build` when you run. Another way to
-easily rebuild and start your containers is with `make start-rebuild`.
-
-If you have only changed configuration values in .env, you can recreate your containers without
-fully rebuilding them with `--force-recreate`. For example:
-
-```sh
-docker compose --profile postgres down
-docker compose --profile postgres up --force-recreate
-```
-
-To see what the environment of your containers is going to look like, run:
-
-```sh
-docker compose --profile postgres convert
-```
-
-#### Using a local or remote (non-docker) database
-
-Omit the `--profile postgres` flag to use a local or remote database. You will need to set the `DATABASE_URL` environment variable in your `.env` file to point to your database.
-
-When using `make` commands, setting POSTGRES_DOCKER to `true` or `false` will determine whether to automatically include `--profile postgres` when it calls out to `docker compose`.
-
-#### Production Mode Shortcuts
-
-The commands in the Makefile can be prefaced with PROD. If so, the "dev overlay" configuration in `docker-compose.dev.yml` will be ignored.
-Ports from services other than the HTTP proxy (80/443) will not be exposed. Containers will not mount local directories, watch for changes,
-or rebuild themselves. In theory this should be one way to run Polis in a production environment.
-
-You need a `prod.env` file:
-
-`cp example.env prod.env` (and update accordingly).
-
-Then you can run things like:
-
-```sh
-make PROD start
-
-make PROD start-rebuild
-```
-
-### Testing out your instance
-
-You can now test your setup by visiting `http://localhost:80/home`.
-
-Once the index page loads, you can create an account using the `/createuser` path.
-You'll be logged in right away; email validation is not required.
-
-When you're done working, you can end the process using `Ctrl+C`, or typing `docker compose --profile postgres down`
-if you are running in "detached mode".
-
-### Updating the system
-
-If you want to update the system, you may need to handle the following:
-
-- [⬆️ Run database migrations](docs/migrations.md), if there are new such
-- Update docker images by running with `--build` if there have been changes to the Dockerfiles
-  - consider using `--no-cache` if you'd like to rebuild from scratch, but note that this will take much longer
+**Overall Progress**: ~25% complete
 
 ---
 
-## 🚀 Production deployment
-
-While the commands above will get a functional Polis system up and running, additional steps must be taken to properly configure, secure and scale the system.
-In particular
-
-- [⚙️ Configure the system](docs/configuration.md), esp:
-  - the domain name you'll be serving from
-  - enable and add API keys for 3rd party services (e.g. automatic comment translation, spam filtering, etc)
-- [🔏 Set up SSL/HTTPS](docs/ssl.md), to keep the site secure
-- [📈 Scale](docs/scaling.md) for large or many concurrent conversations
-
-### Support
-
-We encourage you to take advantage of the public channels above for support setting up a deployment.
-However, if you are deploying in a high impact context and need help, please [reach out to us][hello]
-
----
-
-## 💻 Development tooling
-
-Once you've gotten [Polis running (as described above)](#-running-polis), you can enable developer conveniences by running
-
-```bash
-docker compose -f docker-compose.yml -f docker-compose.dev.yml --profile postgres up
-```
-
-(run with `--build` if this is your first time running, or if you need to rebuild containers)
-
-This enables:
-
-- Live code reloading and static type checking of the server code
-- A nREPL connection port open for connecting to the running math process
-- Ports open for connecting directly to the database container
-- Live code reloading for the client repos (in process)
-- etc.
-
-This command takes advantage of the `docker-compose.dev.yml` _overlay_ file, which layers the developer conveniences describe above into the base system, as described in the `docker-compose.yml` file.
-You can specify these `-f docker-compose.yml -f docker-compose.dev.yml` arguments for any `docker` command which you need to take advantage of these features (not just `docker compose --profile postgres up`).
-
-You can create your own `docker-compose.x.yml` file as an overlay and add or modify any values you need to differ
-from the defaults found in the `docker-compose.yml` file and pass it as the second argument to the `docker compose -f` command above.
-
-### Testing
-
-We use Cypress for automated, end-to-end browser testing for PRs on GitHub (see badge above).
-Please see [`e2e/README.md`](/e2e/README.md) for more information on running these tests locally.
-
-### Miscellaneous & troubleshooting
-
-#### Docker Problems
-
-A lot of issues might be resolved by killing all docker containers and/or restarting docker entirely. If that doesn't
-work, this will wipe all of your polis containers and volumes (**INCLUDING THE DATABASE VOLUME, so don't use this in prod!**) and completely rebuild them:
-
-`make start-FULL-REBUILD`
-
-see also `make help` for additional commands that might be useful.
-
-#### Git Configuration
-
-Due to past file re-organizations, you may find the following git configuration helpful for looking at history:
-
-```sh
-git config --local include.path ../.gitconfig
-```
-
-#### Running as a background process
-
-If you would like to run docker compose as a background process, run the `up` commands with the `--detach` flag, and use `docker compose --profile postgres down` to stop.
-
-#### Using Docker Machine as your development environment
-
-If your development machine is having trouble handling all of the docker containers, look into [using Docker Machine](/docs/docker-machine.md).
-
-#### Resolving problems with npm not finding libraries
-
-Sometimes npm/docker get in a weird state, especially with native libs, and fail to recover gracefully.
-You may get a message like `Error: Cannot find module .... bcrypt`.
-
-If this happens to you, try
-[following the instructions here.](https://github.com/compdemocracy/polis/issues/1391)
-
-#### Issues with Apple Silicon (M1 & M2) chips
-
-You may find it necessary to install some dependencies, namely nodejs and postgres stuff, in a [Rosetta terminal](https://support.apple.com/en-us/HT211861). Create an issue or reach out if you are having strange build issues on Apple computers.
-
-## ©️  License
+## ©️ License
 
 [AGPLv3 with additional permission under section 7](/LICENSE)
+
+Same license as the original Polis project.
+
+---
+
+## 🙏 Acknowledgments
+
+**Original Polis Team**: This fork stands on the shoulders of the excellent work by [Computational Democracy Project](https://github.com/compdemocracy) and all Polis contributors.
+
+**Upstream Repository**: [compdemocracy/polis](https://github.com/compdemocracy/polis)
+
+**UX Fork Maintainer**: [Saar Byrne](https://github.com/saarbyrne)
+
+---
+
+**Built with ❤️ to make democratic deliberation beautiful and accessible**
+
+[Original Polis](https://github.com/compdemocracy/polis) • [Knowledge Base](https://compdemocracy.org/Welcome) • [pol.is Deployment](https://pol.is)
